@@ -1,0 +1,58 @@
+/* #root {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.flexbox-container {
+    display: flex;
+    justify-content: space-evenly;
+    grid-row-gap: 20px;
+    flex-wrap: wrap;
+    grid-template-areas: "header" "content";
+}
+
+.flexbox-item1 {
+    width: 1530px; 
+    height: 300px;
+    grid-area: header;
+    /* border:1px solid gray;  */
+} 
+
+.flexbox-item2 {
+    align-self: flex-end;
+    grid-area: content;
+
+}
+
+@media all and (max-width: 350px) {
+    .JSDraw {
+      width:350px;
+   }
+}
+
+/* .Primary {
+    color: green;
+} */
+
+
+
+
+
+/* body
+{
+    width:1920px;
+    background-color: #f8e0b3;
+    height:1080px;
+} */
+
+
+
+/* @media screen and (min-width: 800px) {
+    .JSDraw {
+      width:720px;
+   }
+} */
+
+
