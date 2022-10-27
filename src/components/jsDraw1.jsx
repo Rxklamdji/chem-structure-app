@@ -1,72 +1,65 @@
 import React, { useEffect, useState } from 'react';
-import {Button}  from 'react-bootstrap';
 import './myStyle1.css'
-import '../common-services/toxicityquery-service.ts'
+
+import {toxicityQuery2} from '../common-services/toxicityquery-service.ts'
+
 
 function JsDraw1() {
 
     const [jsDrawInitialized, setJsDrawInitialized] = useState (false);
 
-
-
     useEffect(() => {
+
         if  (!jsDrawInitialized) {
             window.onload = function () {
                 window.JSDraw.init();
             };
             setJsDrawInitialized(true)
         }
+
       }, [jsDrawInitialized]);
+      
 
+    const [toxicities, setToxicities] = useState(null);
 
-    // function handleSearch () {
-    //     alert("Insert Molfile")
-    // }
-
-    function handleSearch () {
+    async function handleSearch () {
 
         const mol = window.JSDraw.get("test").getMolfile()
 
-        console.log(mol)
-    }
+        const {toxicities: toxs} = await toxicityQuery2(mol)
 
-      
-    
+        setToxicities(toxs)
+    }       
 
-        
-        
 
     return ( 
 
-        <div className="flexbox-container">
-
-            {/* <div className='Primary'>Helloo!!</div> */}
-
-            <div className="flexbox-item1">
-
-                <div className="JSDraw" id="test" skin="w8" >
-
-                </div>   
-
-                {/* style="width: 660px; height: 300px;border:1px solid gray" */}
-    
-            </div>
-
-            {/* <input value={molfile} onChange={e => setMolFile(e.target.value)}/> */}
+        <div className="main-stack">
 
 
-            {/* <button onClick={handleSearch}>Toxicity Search</button> */}
+            <div className="JSDraw" id="test" skin="w8"></div>   
 
-            <div className="flexbox-item2">
+            <button onClick={handleSearch}>Toxicity Search</button>      
 
-                <Button onClick={handleSearch}>Toxicity Search</Button> 
+            {
+                toxicities && (
+                    <>
+                    <h2>Results</h2>
+                    <ul>
 
-            </div>
+                    {toxicities.map(tox =>
+                            <li>
+                                {toxicities}
+                            </li>
+                        )
+                    }
         
-
+                    </ul>
+                    </>
+                )
+            }
+           
         </div>
-
-
     );
 }
 

@@ -1,23 +1,27 @@
-/* #root {
-    flex-grow: 1;
+.main-stack {
     display: flex;
-    justify-content: center;
+    flex-flow: column nowrap;
     align-items: center;
-} */
+}
+
+
+.main-stack > button {
+    
+    margin: 20px 0 40px 0;
+
+}
 
 .flexbox-container {
     display: flex;
     justify-content: space-evenly;
     grid-row-gap: 20px;
     flex-wrap: wrap;
-    grid-template-areas: "header" "content";
 }
 
 .flexbox-item1 {
     width: 1530px; 
     height: 300px;
     grid-area: header;
-    /* border:1px solid gray;  */
 } 
 
 .flexbox-item2 {
@@ -26,33 +30,9 @@
 
 }
 
-@media all and (max-width: 350px) {
-    .JSDraw {
-      width:350px;
-   }
+.loadingStyle {
+    color: yellow;
 }
 
-/* .Primary {
-    color: green;
-} */
-
-
-
-
-
-/* body
-{
-    width:1920px;
-    background-color: #f8e0b3;
-    height:1080px;
-} */
-
-
-
-/* @media screen and (min-width: 800px) {
-    .JSDraw {
-      width:720px;
-   }
-} */
 
 
